@@ -1,0 +1,118 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #af9ac8;
+    color: #cdd8db;
+    font-size: 1.5rem;
+    padding-inline: 4em;
+    height: 100vh;
+    font-family: 'Fira Mono', 'Consolas', 'Menlo', 'Monaco', 'Liberation Mono', monospace;
+    padding: 1rem;
+    display: grid;
+    place-items: center;
+}
+.grid-cards{
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.container {
+    position: relative;
+    width: 200px;
+    height: 300px;
+    perspective: 1000px;
+    margin: 200px auto;
+}
+
+.container_tapa {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    transition: transform 1s ease;
+    transform-style: preserve-3d;
+    z-index: 2;
+}
+.flip-up{
+    transform-origin: 50% 0;
+}
+.flip-left {
+    transform-origin: 0% 0%;
+}
+.flip-right {
+    transform-origin: 100% 100%;
+}
+
+.container_tapa .front,
+.container_tapa .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+     border-radius:8px ;
+}
+
+.front {
+    background: #8e44ad;
+    color: white;
+}
+
+.back {
+    background: #5e337f;
+    color: #fff;
+    transform: rotateX(180deg); /* cara trasera se invierte */
+    font-size: .7rem;
+    padding: 1rem;
+}
+.back.left {
+    transform: rotateY(180deg); 
+}
+.back.right {
+    transform: rotateY(-180deg); 
+}
+
+.card {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgb(127, 255, 129);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    border-radius:8px ;
+    padding: 1rem;
+}
+
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius:8px ;
+}
+
+/* Este selector estaba mal por la anidación */
+.container:hover .flip-up {
+    transform: rotateX(180deg);
+}
+.container:hover .flip-left {
+    transform: rotateY(-180deg);
+}
+.container:hover .flip-right {
+    transform: rotateY(180deg);
+}
+
